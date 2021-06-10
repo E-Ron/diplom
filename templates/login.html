@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="logmain">
+        <div class="loginWrap">
+            <div class="loginH1">вход</div>
+            <div class="loginH2 red">внимание! только для сотрудников аптеки!</div>
+            <form method="POST" action="/login">
+                <input type="text" name="login" placeholder="Ваш логин" autofocus autocomplete="off"/>
+                <input type="password" name="password" placeholder="Ваш пароль" />
+                <button>Войти</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

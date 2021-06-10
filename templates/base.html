@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static',filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='favicon-16x16.png') }}">
+    <title>АПТЕКА</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">АПТЕКА</div>
+        <input type="checkbox" class="nav-toggle" id='nav-toggle'>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/catalog">Каталог</a>
+            {# Конструкция, скрывающая вкладку профиля от не авторизированного пользователя #}
+			{% if usr == None %} <a href="/login">Вход</a> {% else %} <a href="/profile">Профиль</a> {% endif %}
+        </nav>
+    </header>
+    {% with messages = get_flashed_messages(with_categories=True) %} {# Конструкция, позволяющая получать всплывающие сообщения #}
+        {% if messages %}
+            <div class=flashes>
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% block content %} {# Начало основного содержимого #}
+    {% endblock content %} {# Конец основного содержимого #}
+	<footer>
+
+	</footer>
+</body>
+</html>

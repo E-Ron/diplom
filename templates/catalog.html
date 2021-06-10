@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+	<form name="searchForm" id="searchForm" action="/catalog" method="post" hidden>
+	</form>
+	<input list="names" name="searchQuery" form="searchForm" autocomplete="off" />
+	<button name="searchSubmit" form="searchForm">найти</button>
+	<datalist id="names">
+		{% for good in goodsAll %}
+			<option>{{ good['name'] }}</option>
+		{% endfor %}
+	</datalist>
+    <div class="mainContent">
+		<div class="categoryName"> Каталог товаров </div>
+		<div class="catalog">
+			{% for good in goodsShown %}
+                <section class="prodCard">
+                    <img src="{{ url_for('static',filename=good['img']) }}" alt="">
+                    <div class="prodText">
+                        <div class="prodName"> {{ good['name'] }} </div>
+                        <div class="prodAmount {% if good['amount'] == 0 %} {{ 'red' }} {% endif %}"> {% if good['amount'] %} {{ 'В наличии: ' ~ good['amount'] }} {% else %} {{ 'Нет в наличии' }} {% endif %} </div>
+                        <div class="prodPrice"> Цена: <section class="price">{{ good['price'] }} ₽</section> </div>
+                    </div>
+                </section>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

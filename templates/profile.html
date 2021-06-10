@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="mainContent">
+        <div class="adminForms">
+            <div class="prodAdd prodForm">
+                <section class="formName">Добавление новой продукции</section>
+                <form name="add" id="add" enctype=multipart/form-data method="post" action='/profileadd'>
+                    Изображение
+                    <label class="fileUpload">
+                        Добавить изображение
+                        <input type="file" name="file" required/>
+                    </label>
+                    Название <input type="text" name="name" autocomplete="off" required />
+                    Цена <input type="number" name="price" autocomplete="off" required />
+                    Кол-во <input type="number" name="amount" autocomplete="off" required />
+                    <input value="Добавить" type="submit" />
+                </form>
+            </div>
+
+			<div class="prodGetAccounting prodForm">
+				<section class="formName">
+                    Создание отчета
+                </section>
+				<form name="accounting" id="accounting" method="post" action="/profileGetAccounting">
+					<input type="date" name="AccDate1" value="{{ date }}" />
+					<input type="date" name="AccDate2" value="{{ date }}" />
+					<button>Получить отчет</button>
+				</form>
+			</div>
+
+            <div class="prodChange prodForm">
+                <section class="formName">
+                    Изменение продукции
+                </section>
+                {% for good in goods %}
+                    <section class="prodRow">
+                        <form name="good{{ good['id'] }}" id="good{{ good['id'] }}" method="post" hidden action="/profilechange">
+                            <input name="goodid" value="{{ good['id'] }}" readonly />
+                        </form>
+                        <div class="prodRowName"> {{ good['name'] }} </div>
+						<input type="text" name="prodRowNameValue" hidden readonly value="{{ good['name'] }}" form="good{{ good['id'] }}" />
+                        <div class="prodRowAmount"> Кол-во: <input type="number" name="prodAmount" class="price" min="-1" step="0" value="{{ good['amount'] }}" form="good{{ good['id'] }}" /> </div>
+                        <input type="number" name="prodAmountValue" hidden readonly value="{{ good['amount'] }}" form="good{{ good['id'] }}" />
+                        <div class="prodRowPrice"> Цена: <input type="number" name="prodPrice" class="price" min="0" step="1" value="{{ good['price'] }}" form="good{{ good['id'] }}" /> </div>
+                        <input type="number" name="prodPriceValue" hidden readonly value="{{ good['price'] }}" form="good{{ good['id'] }}" />
+                        <button class="prodRowButton" name='submit' form="good{{ good['id'] }}" value="Изменить" >Изменить</button>
+						<button class="prodRowButton" name='submit' form="good{{ good['id'] }}" value="Удалить" > Удалить</button>
+                    </section>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+	<a href="/logout" class="logout">Выйти</a>
+{% endblock %}

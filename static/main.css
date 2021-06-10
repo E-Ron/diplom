@@ -1,0 +1,654 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,400&display=swap");
+:root {
+  font-size: 16px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: white;
+}
+
+.red {
+  color: #e6100b;
+}
+
+header {
+  display: block;
+  background-color: #00A36C;
+  color: #fcfefe;
+  width: 100%;
+  height: 3rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  box-shadow: rgba(0, 0, 0, 0.55) 0 0 6px;
+}
+
+.logo {
+  font-family: "Bitter", serif;
+  font-size: 2rem;
+  line-height: 3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+nav {
+  background-color: #00A36C;
+  position: absolute;
+  top: 3rem;
+  width: 100vw;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  transform: scale(1, 0);
+  transition: transform 300ms ease-in-out;
+  transform-origin: top;
+  flex-direction: row;
+  justify-content: space-around;
+  z-index: 123;
+}
+
+nav a {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  color: #fcfefe;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+}
+
+nav a:hover {
+  color: #003d28;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out 300ms;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 1rem;
+  height: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background-color: white;
+  height: 0.15rem;
+  border-radius: 0.15rem;
+  width: 1.5rem;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 0.5rem;
+}
+
+.nav-toggle-label span::after {
+  top: 0.5rem;
+}
+
+.mainContent {
+  display: grid;
+  justify-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.indexBanner {
+  width: min(100%, 1500px);
+  position: relative;
+  display: inline-flex;
+}
+.indexBanner img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+}
+.indexBanner img.bannerPC {
+  display: none;
+}
+.indexBanner img.bannerPhone {
+  display: block;
+}
+
+.categoryName {
+  justify-self: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  width: min(1200px, 70%);
+  grid-row-gap: 4rem;
+  grid-auto-rows: 1fr;
+}
+
+.prodCard {
+  width: 230px;
+  font-family: "Roboto", sans-serif;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.45) 0 4px 6px;
+}
+.prodCard img {
+  align-self: center;
+  max-height: 200px;
+  max-width: 200px;
+}
+.prodCard .prodText {
+  display: block;
+}
+.prodCard .prodText .prodName {
+  text-transform: uppercase;
+  font-family: "Bitter", serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.prodCard .prodText .prodAmount {
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+.prodCard .prodText .prodPrice {
+  text-align: right;
+  font-weight: 300;
+}
+.prodCard .prodText .prodPrice .price {
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.logmain {
+  height: calc(100vh - 8rem);
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+.logmain .loginWrap {
+  margin-bottom: 5rem;
+  width: min(700px, 70%);
+}
+.logmain .loginWrap .loginH1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-family: "Bitter", serif;
+  width: 100%;
+}
+.logmain .loginWrap .loginH2 {
+  margin-top: 1.5rem;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+}
+.logmain .loginWrap form {
+  margin-top: 1.5rem;
+  display: grid;
+  justify-items: center;
+}
+.logmain .loginWrap form input {
+  outline: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  width: 70%;
+  border: 2px solid #adadad;
+}
+.logmain .loginWrap form input:hover {
+  border-color: #68a993;
+}
+.logmain .loginWrap form input:focus {
+  border-color: #00A36C;
+}
+.logmain .loginWrap form button {
+  outline: none;
+  background-image: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  background-color: #34a680;
+  color: #fcfefe;
+  font-size: 1.2rem;
+  padding: 0.6rem;
+  border-radius: 5px;
+  width: 200px;
+  cursor: pointer;
+}
+.logmain .loginWrap form button:focus, .logmain .loginWrap form button:hover {
+  background-color: #00A36C;
+}
+
+.adminForms {
+  width: min(1200px, 70%);
+  display: inherit;
+  justify-content: center;
+}
+.adminForms input::-webkit-outer-spin-button,
+.adminForms input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.adminForms input[type=number] {
+  -moz-appearance: textfield;
+}
+.adminForms .prodForm {
+  margin-bottom: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+}
+.adminForms .prodForm .formName {
+  text-align: center;
+  font-family: "Bitter", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  justify-self: center;
+}
+.adminForms .prodAdd form {
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 1.2rem;
+}
+.adminForms .prodAdd form input {
+  outline: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  height: 1rem;
+  padding: 0.3rem;
+  text-align: start;
+  border: 2px solid #adadad;
+}
+.adminForms .prodAdd form input[type=file] {
+  display: none;
+}
+.adminForms .prodAdd input[type=submit], .adminForms .prodAdd .fileUpload {
+  outline: none;
+  background-image: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  background-color: #34a680;
+  color: #fcfefe;
+  font-size: 1rem;
+  padding: 0.6rem;
+  border-radius: 5px;
+  width: 100px;
+  cursor: pointer;
+}
+.adminForms .prodAdd input[type=submit] {
+  text-align: center;
+  height: unset;
+  grid-column: 2;
+  justify-self: center;
+}
+.adminForms .prodAdd .fileUpload {
+  text-align: center;
+  border: 2px solid #00A36C;
+  width: auto;
+  height: 1rem;
+  padding: 0.3rem;
+}
+.adminForms .prodAdd input[type=submit]:focus, .adminForms .prodAdd input[type=submit]:hover, .adminForms .prodAdd .fileUpload:focus, .adminForms .prodAdd .fileUpload:hover {
+  background-color: #00A36C;
+}
+.adminForms .prodChange .prodRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1.2rem;
+  grid-row-gap: 1.2rem;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 1px #00A36C solid;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 4px 6px;
+}
+.adminForms .prodChange .prodRow .prodRowName {
+  grid-column: 1/3;
+  justify-self: center;
+}
+.adminForms .prodChange .prodRow .prodRowAmount {
+  grid-column: 1;
+}
+.adminForms .prodChange .prodRow .prodRowPrice {
+  grid-column: 2;
+}
+.adminForms .prodChange .prodRow .prodRowButton {
+  outline: none;
+  background-image: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  background-color: #34a680;
+  color: #fcfefe;
+  font-size: 1rem;
+  padding: 0.6rem;
+  border-radius: 5px;
+  width: auto;
+  cursor: pointer;
+}
+.adminForms .prodChange .prodRow .prodRowButton:focus, .adminForms .prodChange .prodRow .prodRowButton:hover {
+  background-color: #00A36C;
+}
+
+.errorParagraph {
+  margin-top: 3rem;
+  display: grid;
+  justify-content: center;
+}
+.errorParagraph h1, .errorParagraph p {
+  text-align: center;
+}
+.errorParagraph p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+.errorParagraph p a {
+  padding: 0;
+  margin: 0;
+  color: #00A36C;
+  text-decoration: none;
+  font-weight: 400;
+  position: relative;
+}
+.errorParagraph p a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #003d28;
+  transform: scale(0, 1);
+  transform-origin: left;
+  transition: transform 250ms ease-in-out;
+}
+.errorParagraph p a:hover {
+  color: #003d28;
+}
+.errorParagraph p a:hover::before {
+  transform: scale(1, 1);
+}
+
+.logout {
+  background-color: #00A36C;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  font-size: 1.2rem;
+  color: #fcfefe;
+  text-decoration: none;
+}
+
+.flashes {
+  overflow: hidden;
+  position: fixed;
+  top: 3.5rem;
+  right: 20px;
+  height: max-content;
+  width: max-content;
+}
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  25% {
+    transform: translateX(0%);
+  }
+  75% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes slideToRight {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(100%);
+  }
+  75% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.flashes p {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  padding: 0.4rem;
+  border-radius: 5px;
+  margin: 0;
+  transform: translateX(100%);
+  animation: slideFromRight 3000ms cubic-bezier(0.65, 0.05, 0.36, 1), slideToRight 3000ms cubic-bezier(0.65, 0.05, 0.36, 1) 3000ms;
+  margin-bottom: 1rem;
+}
+.flashes .message {
+  background-color: #00A36C;
+  color: #fcfefe;
+}
+.flashes .error {
+  background-color: #e6100b;
+  color: #fcfefe;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 780px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+  }
+
+  .logo {
+    padding: 0;
+    font-size: 3rem;
+    line-height: 3rem;
+    width: max-content;
+    margin-left: 10rem;
+  }
+
+  .nav-toggle-label {
+    display: none;
+  }
+
+  nav {
+    position: relative;
+    top: 0;
+    transition: none;
+    transform: none;
+    background-color: transparent;
+    width: max-content;
+    margin-right: 3rem;
+  }
+
+  nav a {
+    font-size: 1rem;
+    opacity: 1;
+    transition: none;
+    margin-right: 3rem;
+    position: relative;
+  }
+
+  nav a::before {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: -0.5rem;
+    content: "";
+    display: block;
+    height: 3px;
+    background-color: #003d28;
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: transform 250ms ease-in-out;
+  }
+
+  nav a:hover::before {
+    transform: scale(1, 1);
+  }
+
+  .indexBanner {
+    width: min(100%, 1500px);
+  }
+  .indexBanner img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .indexBanner img.bannerPC {
+    display: block;
+  }
+  .indexBanner img.bannerPhone {
+    display: none;
+  }
+
+  .categoryName {
+    font-family: "Bitter", serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+  }
+
+  .adminForms .prodAdd form {
+    width: 70%;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-row-gap: 1.2rem;
+  }
+  .adminForms .prodAdd form input {
+    outline: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    height: 1rem;
+    padding: 0.3rem;
+    text-align: start;
+    border: 2px solid #adadad;
+  }
+  .adminForms .prodAdd form input[type=file] {
+    display: none;
+  }
+  .adminForms .prodAdd input[type=submit], .adminForms .prodAdd .fileUpload {
+    outline: none;
+    background-image: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    background-color: #34a680;
+    color: #fcfefe;
+    font-size: 1rem;
+    padding: 0.6rem;
+    border-radius: 5px;
+    width: 100px;
+    cursor: pointer;
+  }
+  .adminForms .prodAdd input[type=submit] {
+    text-align: center;
+    height: unset;
+    grid-column: 2;
+    justify-self: center;
+  }
+  .adminForms .prodAdd .fileUpload {
+    text-align: center;
+    border: 2px solid #00A36C;
+    width: auto;
+    height: 1rem;
+    padding: 0.3rem;
+  }
+  .adminForms .prodAdd button:focus, .adminForms .prodAdd button:hover {
+    background-color: #00A36C;
+  }
+  .adminForms .prodChange .prodRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1.2rem;
+    align-items: center;
+  }
+  .adminForms .prodChange .prodRow .prodRowName {
+    grid-column: unset;
+  }
+  .adminForms .prodChange .prodRow .prodRowAmount {
+    grid-column: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .adminForms .prodChange .prodRow .prodRowPrice {
+    grid-column: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .flashes {
+    right: 100px;
+    top: 5rem;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
